@@ -8,7 +8,7 @@ import com.lorne.tx.bean.TxTransactionInfo;
 import com.lorne.tx.bean.TxTransactionLocal;
 import com.lorne.tx.mq.model.TxGroup;
 import com.lorne.tx.mq.service.MQTxManagerService;
-import com.lorne.tx.service.TransactionRunningService;
+import com.lorne.tx.service.TransactionThreadService;
 import com.lorne.tx.service.TransactionServer;
 import com.lorne.tx.service.model.ServiceThreadModel;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -32,7 +32,7 @@ public class TxStartTransactionServerImpl implements TransactionServer {
 
 
     @Autowired
-    private TransactionRunningService transactionRunningService;
+    private TransactionThreadService transactionThreadService;
 
 
     @Override
@@ -61,11 +61,11 @@ public class TxStartTransactionServerImpl implements TransactionServer {
                 boolean signTask = false;
 
 
-                ServiceThreadModel model = transactionRunningService.serviceInThread(signTask, groupId, task, point);
+                ServiceThreadModel model = transactionThreadService.serviceInThread(signTask, groupId, task, point);
                 if (model == null) {
                     return;
                 }
-                transactionRunningService.serviceWait(signTask, task, model);
+                transactionThreadService.serviceWait(signTask, task, model);
             }
         });
 

@@ -9,7 +9,7 @@ import com.lorne.core.framework.utils.task.Task;
 import com.lorne.tx.mq.model.TxGroup;
 import com.lorne.tx.mq.service.MQTxManagerService;
 import com.lorne.tx.mq.service.NettyService;
-import com.lorne.tx.service.TransactionRunningService;
+import com.lorne.tx.service.TransactionThreadService;
 import com.lorne.tx.service.model.ServiceThreadModel;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.slf4j.Logger;
@@ -27,7 +27,7 @@ import java.util.concurrent.TimeUnit;
  * Created by lorne on 2017/6/9.
  */
 @Service
-public class TransactionRunningServiceImpl implements TransactionRunningService {
+public class TransactionThreadServiceImpl implements TransactionThreadService {
 
     @Autowired
     private PlatformTransactionManager txManager;
@@ -39,7 +39,7 @@ public class TransactionRunningServiceImpl implements TransactionRunningService 
     private NettyService nettyService;
 
 
-    private Logger logger = LoggerFactory.getLogger(TransactionRunningServiceImpl.class);
+    private Logger logger = LoggerFactory.getLogger(TransactionThreadServiceImpl.class);
 
     @Override
     public ServiceThreadModel serviceInThread(boolean signTask, String _groupId, Task task, ProceedingJoinPoint point) {
@@ -132,7 +132,7 @@ public class TransactionRunningServiceImpl implements TransactionRunningService 
 
         try {
             int state = (Integer) waitTask.getBack().doing();
-            logger.info("waitTask:" + state);
+            logger.info("单元事务（1：提交 0 -1：回滚）:" + state);
             if (state == 1) {
                 txManager.commit(status);
             } else {

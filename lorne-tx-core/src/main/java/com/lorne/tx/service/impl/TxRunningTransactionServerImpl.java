@@ -6,7 +6,7 @@ import com.lorne.core.framework.utils.task.Task;
 import com.lorne.tx.Constants;
 import com.lorne.tx.bean.TxTransactionInfo;
 import com.lorne.tx.bean.TxTransactionLocal;
-import com.lorne.tx.service.TransactionRunningService;
+import com.lorne.tx.service.TransactionThreadService;
 import com.lorne.tx.service.TransactionServer;
 import com.lorne.tx.service.model.ServiceThreadModel;
 import org.apache.commons.lang.StringUtils;
@@ -28,7 +28,7 @@ public class TxRunningTransactionServerImpl implements TransactionServer {
 
 
     @Autowired
-    private TransactionRunningService transactionRunningService;
+    private TransactionThreadService transactionThreadService;
 
 
     @Override
@@ -60,12 +60,12 @@ public class TxRunningTransactionServerImpl implements TransactionServer {
 
                 logger.info("taskId-id-tx-running:" + taskId);
 
-                ServiceThreadModel model = transactionRunningService.serviceInThread(true, _groupId, task, point);
+                ServiceThreadModel model = transactionThreadService.serviceInThread(true, _groupId, task, point);
                 if (model == null) {
                     return;
                 }
 
-                transactionRunningService.serviceWait(true, task, model);
+                transactionThreadService.serviceWait(true, task, model);
             }
         });
 

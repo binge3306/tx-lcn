@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3604b183-aabf-449d-b06d-d86604f651bd" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-    </list>
+    <list default="true" id="3604b183-aabf-449d-b06d-d86604f651bd" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -20,29 +18,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="396">
               <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#338#339#0" expanded="false" />
-                <element signature="e#368#369#0" expanded="false" />
-                <element signature="e#399#400#0" expanded="false" />
-                <element signature="e#434#435#0" expanded="false" />
-                <element signature="e#490#491#0" expanded="false" />
-                <element signature="e#530#531#0" expanded="false" />
-                <element signature="e#564#565#0" expanded="false" />
-                <element signature="e#594#595#0" expanded="false" />
-                <element signature="e#640#641#0" expanded="false" />
-                <element signature="e#678#679#0" expanded="false" />
-                <element signature="e#715#716#0" expanded="false" />
-                <element signature="e#742#743#0" expanded="false" />
-                <element signature="e#789#790#0" expanded="false" />
-                <element signature="e#827#828#0" expanded="false" />
-                <element signature="e#873#874#0" expanded="false" />
-                <element signature="e#905#906#0" expanded="false" />
-                <element signature="e#1057#1058#0" expanded="false" />
-                <element signature="e#1088#1089#0" expanded="false" />
-                <element signature="e#1133#1134#0" expanded="false" />
-                <element signature="e#1173#1174#0" expanded="false" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -82,9 +58,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="2200">
               <caret line="116" column="29" lean-forward="false" selection-start-line="116" selection-start-column="29" selection-end-line="116" selection-end-column="29" />
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -92,7 +66,7 @@
       <file leaf-file-name="NettyServiceImpl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/lorne/tx/mq/service/impl/NettyServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="310">
+            <state relative-caret-position="1738">
               <caret line="100" column="5" lean-forward="false" selection-start-line="100" selection-start-column="5" selection-end-line="100" selection-end-column="5" />
               <folding />
             </state>
@@ -103,7 +77,7 @@
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="462">
-              <caret line="21" column="37" lean-forward="false" selection-start-line="21" selection-start-column="37" selection-end-line="21" selection-end-column="37" />
+              <caret line="21" column="17" lean-forward="false" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -124,9 +98,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="726">
               <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -142,7 +114,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="GradleLocalSettings">
     <option name="externalProjectsViewState">
@@ -197,8 +169,22 @@
           <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
-          <option name="myItemId" value="transaction" />
+          <option name="myItemId" value="lorne-tx-core" />
           <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="lorne-tx-core" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="Lifecycle" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$LifecycleNode" />
         </PATH_ELEMENT>
       </PATH>
     </treeState>
@@ -224,8 +210,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -480,7 +465,8 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -984,6 +970,7 @@
       <workItem from="1498960953465" duration="4707000" />
       <workItem from="1498966211641" duration="27000" />
       <workItem from="1498967218817" duration="605000" />
+      <workItem from="1498982266122" duration="25000" />
     </task>
     <task id="LOCAL-00001" summary="misc">
       <created>1498887320550</created>
@@ -1073,10 +1060,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13589000" />
+    <option name="totallyTimeSpent" value="13614000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1619" height="1028" extended-state="6" />
+    <frame x="0" y="22" width="1619" height="1028" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1086,15 +1073,15 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32910588" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32967034" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32910588" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32967034" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32967034" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32967034" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35256818" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35700697" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1153,9 +1140,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="726">
           <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1171,29 +1156,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
           <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#338#339#0" expanded="false" />
-            <element signature="e#368#369#0" expanded="false" />
-            <element signature="e#399#400#0" expanded="false" />
-            <element signature="e#434#435#0" expanded="false" />
-            <element signature="e#490#491#0" expanded="false" />
-            <element signature="e#530#531#0" expanded="false" />
-            <element signature="e#564#565#0" expanded="false" />
-            <element signature="e#594#595#0" expanded="false" />
-            <element signature="e#640#641#0" expanded="false" />
-            <element signature="e#678#679#0" expanded="false" />
-            <element signature="e#715#716#0" expanded="false" />
-            <element signature="e#742#743#0" expanded="false" />
-            <element signature="e#789#790#0" expanded="false" />
-            <element signature="e#827#828#0" expanded="false" />
-            <element signature="e#873#874#0" expanded="false" />
-            <element signature="e#905#906#0" expanded="false" />
-            <element signature="e#1057#1058#0" expanded="false" />
-            <element signature="e#1088#1089#0" expanded="false" />
-            <element signature="e#1133#1134#0" expanded="false" />
-            <element signature="e#1173#1174#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1225,29 +1188,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
           <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#338#339#0" expanded="false" />
-            <element signature="e#368#369#0" expanded="false" />
-            <element signature="e#399#400#0" expanded="false" />
-            <element signature="e#434#435#0" expanded="false" />
-            <element signature="e#490#491#0" expanded="false" />
-            <element signature="e#530#531#0" expanded="false" />
-            <element signature="e#564#565#0" expanded="false" />
-            <element signature="e#594#595#0" expanded="false" />
-            <element signature="e#640#641#0" expanded="false" />
-            <element signature="e#678#679#0" expanded="false" />
-            <element signature="e#715#716#0" expanded="false" />
-            <element signature="e#742#743#0" expanded="false" />
-            <element signature="e#789#790#0" expanded="false" />
-            <element signature="e#827#828#0" expanded="false" />
-            <element signature="e#873#874#0" expanded="false" />
-            <element signature="e#905#906#0" expanded="false" />
-            <element signature="e#1057#1058#0" expanded="false" />
-            <element signature="e#1088#1089#0" expanded="false" />
-            <element signature="e#1133#1134#0" expanded="false" />
-            <element signature="e#1173#1174#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1263,29 +1204,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#338#339#0" expanded="false" />
-            <element signature="e#368#369#0" expanded="false" />
-            <element signature="e#399#400#0" expanded="false" />
-            <element signature="e#434#435#0" expanded="false" />
-            <element signature="e#490#491#0" expanded="false" />
-            <element signature="e#530#531#0" expanded="false" />
-            <element signature="e#564#565#0" expanded="false" />
-            <element signature="e#594#595#0" expanded="false" />
-            <element signature="e#640#641#0" expanded="false" />
-            <element signature="e#678#679#0" expanded="false" />
-            <element signature="e#715#716#0" expanded="false" />
-            <element signature="e#742#743#0" expanded="false" />
-            <element signature="e#789#790#0" expanded="false" />
-            <element signature="e#827#828#0" expanded="false" />
-            <element signature="e#873#874#0" expanded="false" />
-            <element signature="e#905#906#0" expanded="false" />
-            <element signature="e#1057#1058#0" expanded="false" />
-            <element signature="e#1088#1089#0" expanded="false" />
-            <element signature="e#1133#1134#0" expanded="false" />
-            <element signature="e#1173#1174#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1304,13 +1223,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lorne/tx/service/impl/TransactionRunningServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="638">
-          <caret line="29" column="13" lean-forward="false" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lorne/tx/service/impl/TransactionRunningServiceImpl.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/lorne/tx/mq/service/impl/NettyServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="594">
@@ -1375,20 +1288,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lorne/tx/service/TransactionRunningService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="11" column="23" lean-forward="false" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lorne/tx/service/impl/TransactionRunningServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="924">
-          <caret line="42" column="13" lean-forward="false" selection-start-line="42" selection-start-column="13" selection-end-line="42" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lorne/tx/service/TransactionRunningService.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lorne/tx/service/impl/TransactionRunningServiceImpl.java" />
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="242">
@@ -1441,13 +1342,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lorne/tx/service/TransactionRunningService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="11" column="23" lean-forward="false" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lorne/tx/service/TransactionRunningService.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/lorne/tx/service/impl/TxDefaultTransactionServerImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="304">
@@ -1491,13 +1386,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/lorne/tx/mq/TransactionHandler.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/lorne/tx/service/impl/TransactionRunningServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1458">
-          <caret line="153" column="18" lean-forward="false" selection-start-line="153" selection-start-column="18" selection-end-line="153" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lorne/tx/service/impl/TransactionRunningServiceImpl.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/lorne/tx/mq/model/TxServer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="242">
@@ -1509,29 +1398,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
           <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#338#339#0" expanded="false" />
-            <element signature="e#368#369#0" expanded="false" />
-            <element signature="e#399#400#0" expanded="false" />
-            <element signature="e#434#435#0" expanded="false" />
-            <element signature="e#490#491#0" expanded="false" />
-            <element signature="e#530#531#0" expanded="false" />
-            <element signature="e#564#565#0" expanded="false" />
-            <element signature="e#594#595#0" expanded="false" />
-            <element signature="e#640#641#0" expanded="false" />
-            <element signature="e#678#679#0" expanded="false" />
-            <element signature="e#715#716#0" expanded="false" />
-            <element signature="e#742#743#0" expanded="false" />
-            <element signature="e#789#790#0" expanded="false" />
-            <element signature="e#827#828#0" expanded="false" />
-            <element signature="e#873#874#0" expanded="false" />
-            <element signature="e#905#906#0" expanded="false" />
-            <element signature="e#1057#1058#0" expanded="false" />
-            <element signature="e#1088#1089#0" expanded="false" />
-            <element signature="e#1133#1134#0" expanded="false" />
-            <element signature="e#1173#1174#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1556,9 +1423,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="726">
           <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1582,15 +1447,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2200">
           <caret line="116" column="29" lean-forward="false" selection-start-line="116" selection-start-column="29" selection-end-line="116" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/lorne/tx/mq/service/impl/NettyServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
+        <state relative-caret-position="1738">
           <caret line="100" column="5" lean-forward="false" selection-start-line="100" selection-start-column="5" selection-end-line="100" selection-end-column="5" />
           <folding />
         </state>
@@ -1599,7 +1462,7 @@
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="462">
-          <caret line="21" column="37" lean-forward="false" selection-start-line="21" selection-start-column="37" selection-end-line="21" selection-end-column="37" />
+          <caret line="21" column="17" lean-forward="false" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="17" />
           <folding />
         </state>
       </provider>

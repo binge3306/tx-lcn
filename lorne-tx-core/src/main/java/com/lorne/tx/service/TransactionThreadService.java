@@ -7,7 +7,7 @@ import org.aspectj.lang.ProceedingJoinPoint;
 /**
  * Created by lorne on 2017/6/9.
  */
-public interface TransactionRunningService {
+public interface TransactionThreadService {
 
     ServiceThreadModel serviceInThread(boolean signTask, String _groupId, Task task, ProceedingJoinPoint point);
 
