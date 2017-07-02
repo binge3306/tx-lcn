@@ -1,6 +1,11 @@
 package com.lorne.tx.manager.service.impl;
 
 
+import com.lorne.core.framework.utils.KidUtils;
+import com.lorne.core.framework.utils.task.ConditionUtils;
+import com.lorne.core.framework.utils.task.Task;
+import com.lorne.core.framework.utils.thread.CountDownLatchHelper;
+import com.lorne.core.framework.utils.thread.IExecute;
 import com.lorne.tx.Constants;
 import com.lorne.tx.manager.service.TransactionConfirmService;
 import com.lorne.tx.mq.model.TxGroup;
@@ -33,8 +38,6 @@ public class TransactionConfirmServiceImpl implements TransactionConfirmService 
         boolean checkState = true;
 
 
-        //检查网络状态是否正常
-        boolean hasOk =  checkRollback(txGroup.getList());
 
         //检查事务是否正常
         for(TxInfo info:txGroup.getList()){
@@ -43,18 +46,30 @@ public class TransactionConfirmServiceImpl implements TransactionConfirmService 
             }
         }
 
+        //绑定管道对象，检查网络
+        boolean isOk =  reloadChannel(txGroup.getList());
+
+
         //事务不满足直接回滚事务
         if(!checkState){
             transaction(txGroup.getList(),0);
             return;
         }
 
-        if(hasOk){
-            //通知事务
-            transaction(txGroup.getList(),1);
+        if(isOk){
+            //锁定事务单元
+            boolean  isLock =  lock(txGroup.getList());
+
+            if(isLock){
+                //通知事务
+                transaction(txGroup.getList(),1);
+            }else{
+                transaction(txGroup.getList(),-1);
+            }
         }else{
-            transaction(txGroup.getList(),-1);
+            transaction(txGroup.getList(),0);
         }
+
 
     }
 
@@ -64,7 +79,7 @@ public class TransactionConfirmServiceImpl implements TransactionConfirmService 
      * 检查事务是否提交
      * @param list
      */
-    private boolean checkRollback(List<TxInfo> list){
+    private boolean reloadChannel(List<TxInfo> list){
         int count = 0;
         for(TxInfo info:list){
             Channel channel =  SocketManager.getInstance().getChannelByModelName(info.getModelName());
@@ -98,6 +113,44 @@ public class TransactionConfirmServiceImpl implements TransactionConfirmService 
                 }
             });
         }
+    }
+
+
+    private boolean lock(List<TxInfo> list){
+        for(final TxInfo txInfo:list){
+            CountDownLatchHelper<Boolean> countDownLatchHelper = new CountDownLatchHelper<>();
+            countDownLatchHelper.addExecute(new IExecute<Boolean>() {
+                @Override
+                public Boolean execute() {
+                    JSONObject jsonObject = new JSONObject();
+                    jsonObject.put("a","l");
+                    jsonObject.put("t",txInfo.getKid());
+                    String key = KidUtils.generateShortUuid();
+                    jsonObject.put("k",key);
+                    Task task = ConditionUtils.getInstance().createTask(key);
+                    txInfo.getChannel().writeAndFlush(Unpooled.buffer().writeBytes(jsonObject.toString().getBytes()));
+                    task.awaitTask();
+                    try {
+                        String data = (String)task.getBack().doing();
+                        return "1".equals(data);
+                    } catch (Throwable throwable) {
+                        throwable.printStackTrace();
+                    }finally {
+                        task.remove();
+                    }
+                    return false;
+                }
+            });
+              List<Boolean> isLocks =  countDownLatchHelper.execute().getData();
+              for(boolean bl:isLocks){
+                  if(bl==false){
+                      return false;
+                  }
+              }
+
+        }
+
+        return true;
     }
 
 

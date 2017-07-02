@@ -70,19 +70,54 @@ public class TransactionHandler extends ChannelInboundHandlerAdapter {
         if (StringUtils.isNotEmpty(json)) {
             JSONObject resObj = JSONObject.fromObject(json);
             if (resObj.has("a")) {
-                //通知提醒
-                final int state = resObj.getInt("c");
-                String taskId = resObj.getString("t");
-                Task task = ConditionUtils.getInstance().getTask(taskId);
-                if (task != null) {
-                    task.setBack(new IBack() {
-                        @Override
-                        public Object doing(Object... objects) throws Throwable {
-                            return state;
+
+                String action = resObj.getString("a");
+
+                switch (action){
+                    case "t":{
+                        //通知提醒
+                        final int state = resObj.getInt("c");
+                        String taskId = resObj.getString("t");
+                        Task task = ConditionUtils.getInstance().getTask(taskId);
+                        if (task != null) {
+                            task.setBack(new IBack() {
+                                @Override
+                                public Object doing(Object... objects) throws Throwable {
+                                    return state;
+                                }
+                            });
+                            task.signalTask();
                         }
-                    });
-                    task.signalTask();
+                        break;
+                    }
+                    case "l":{
+                        String taskId = resObj.getString("t");
+                        String key = resObj.getString("k");
+                        Task task = ConditionUtils.getInstance().getTask(taskId);
+                        String res = "";
+                        if (task != null) {
+                            if(!task.isNotify()){
+                                task.setState(1);
+                                res = "1";//稍微回滚
+                            }else{
+                                res = "0";//已经回滚
+                            }
+                        }else{
+                            res = "0";//已经回滚
+                        }
+
+                        JSONObject data = new JSONObject();
+                        data.put("k",key);
+                        data.put("a",action);
+
+                        JSONObject params = new JSONObject();
+                        params.put("d",res);
+                        data.put("p",params);
+                        ctx.writeAndFlush(Unpooled.buffer().writeBytes(data.toString().getBytes()));
+                        break;
+                    }
                 }
+
             } else {
                 String key = resObj.getString("k");
                 if (!"h".equals(key)) {

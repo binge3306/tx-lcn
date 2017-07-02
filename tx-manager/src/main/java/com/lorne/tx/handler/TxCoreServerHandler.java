@@ -4,6 +4,9 @@ package com.lorne.tx.handler;
  * Created by lorne on 2017/6/29.
  */
 
+import com.lorne.core.framework.utils.task.ConditionUtils;
+import com.lorne.core.framework.utils.task.IBack;
+import com.lorne.core.framework.utils.task.Task;
 import com.lorne.tx.manager.service.TxManagerService;
 import com.lorne.tx.mq.model.TxGroup;
 import com.lorne.tx.socket.SocketManager;
@@ -103,6 +106,7 @@ public class TxCoreServerHandler extends ChannelInboundHandlerAdapter { // (1)
                     res = "1";
                     break;
                 }
+
                 //上传模块信息
                 case "m":{
                     String name = params.getString("n");
@@ -117,6 +121,22 @@ public class TxCoreServerHandler extends ChannelInboundHandlerAdapter { // (1)
                     }
                     res = "1";
                     break;
+                }
+
+                //锁定事务单元
+                case "l":{
+                    final String data = params.getString("d");
+                    Task task = ConditionUtils.getInstance().getTask(key);
+                    if(task!=null){
+                        task.setBack(new IBack() {
+                            @Override
+                            public Object doing(Object... objs) throws Throwable {
+                                return data;
+                            }
+                        });
+                    }
+                    task.signalTask();
+                   return;
                 }
 
             }
