@@ -38,7 +38,7 @@ public class TxCoreServerHandler extends ChannelInboundHandlerAdapter { // (1)
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-        String json ;
+        String json;
         try {
             ByteBuf buf = (ByteBuf) msg;
             byte[] bytes = new byte[buf.readableBytes()];
@@ -48,72 +48,72 @@ public class TxCoreServerHandler extends ChannelInboundHandlerAdapter { // (1)
             ReferenceCountUtil.release(msg); // (2)
         }
 
-        if(StringUtils.isNotEmpty(json)){
+        if (StringUtils.isNotEmpty(json)) {
             JSONObject jsonObject = JSONObject.fromObject(json);
             String action = jsonObject.getString("a");
             String key = jsonObject.getString("k");
             JSONObject params = JSONObject.fromObject(jsonObject.getString("p"));
 
-            String res ="";
-            switch (action){
+            String res = "";
+            switch (action) {
                 //创建事务组
-                case "cg":{
-                    TxGroup txGroup =  txManagerService.createTransactionGroup();
+                case "cg": {
+                    TxGroup txGroup = txManagerService.createTransactionGroup();
                     res = txGroup.toJsonString();
                     break;
                 }
                 //添加事务组
-                case "atg":{
+                case "atg": {
                     String groupId = params.getString("g");
                     String taskId = params.getString("t");
                     String modelName = "";
                     Attribute<SocketVal> attribute = SocketManager.getInstance().getSocketAttribute(ctx.channel());
-                    if(attribute!=null){
-                        SocketVal val =  attribute.get();
-                        if(val!=null) {
-                            modelName =  val.getName();
+                    if (attribute != null) {
+                        SocketVal val = attribute.get();
+                        if (val != null) {
+                            modelName = val.getName();
                         }
                     }
-                    if(StringUtils.isNotEmpty(modelName)){
-                        TxGroup txGroup =  txManagerService.addTransactionGroup(groupId,taskId,modelName);
+                    if (StringUtils.isNotEmpty(modelName)) {
+                        TxGroup txGroup = txManagerService.addTransactionGroup(groupId, taskId, modelName);
                         res = txGroup.toJsonString();
-                    }else{
+                    } else {
                         res = "";
                     }
                     break;
                 }
                 //修改模块信息
-                case "nti":{
+                case "nti": {
                     String groupId = params.getString("g");
                     String kid = params.getString("k");
                     int state = params.getInt("s");
-                    boolean bs =  txManagerService.notifyTransactionInfo(groupId,kid,state==1);
-                    res = bs?"1":"0";
+                    boolean bs = txManagerService.notifyTransactionInfo(groupId, kid, state == 1);
+                    res = bs ? "1" : "0";
                     break;
                 }
 
                 //关闭事务组
-                case "ctg":{
+                case "ctg": {
                     String groupId = params.getString("g");
                     boolean bs = txManagerService.closeTransactionGroup(groupId);
 
-                    res = bs?"1":"0";
+                    res = bs ? "1" : "0";
                     break;
                 }
 
                 //心跳包
-                case "h":{
+                case "h": {
                     res = "1";
                     break;
                 }
 
                 //上传模块信息
-                case "m":{
+                case "m": {
                     String name = params.getString("n");
                     Attribute<SocketVal> attribute = SocketManager.getInstance().getSocketAttribute(ctx.channel());
-                    if(attribute!=null){
-                        SocketVal val =  attribute.get();
-                        if(val==null){
+                    if (attribute != null) {
+                        SocketVal val = attribute.get();
+                        if (val == null) {
                             val = new SocketVal();
                         }
                         val.setName(name);
@@ -124,25 +124,25 @@ public class TxCoreServerHandler extends ChannelInboundHandlerAdapter { // (1)
                 }
 
                 //锁定事务单元
-                case "l":{
+                case "l": {
                     final String data = params.getString("d");
                     Task task = ConditionUtils.getInstance().getTask(key);
-                    if(task!=null){
+                    if (task != null) {
                         task.setBack(new IBack() {
                             @Override
                             public Object doing(Object... objs) throws Throwable {
                                 return data;
                             }
                         });
+                        task.signalTask();
                     }
-                    task.signalTask();
-                   return;
+                    return;
                 }
 
             }
             JSONObject resObj = new JSONObject();
-            resObj.put("k",key);
-            resObj.put("d",res);
+            resObj.put("k", key);
+            resObj.put("d", res);
             ctx.writeAndFlush(Unpooled.buffer().writeBytes(resObj.toString().getBytes()));
         }
 
@@ -152,9 +152,9 @@ public class TxCoreServerHandler extends ChannelInboundHandlerAdapter { // (1)
     public void channelRegistered(ChannelHandlerContext ctx) throws Exception {
 
         //是否到达最大上线连接数
-        if(SocketManager.getInstance().isAllowConnection()){
+        if (SocketManager.getInstance().isAllowConnection()) {
             SocketManager.getInstance().addClient(ctx.channel());
-        }else{
+        } else {
             ctx.close();
         }
         super.channelRegistered(ctx);
@@ -167,12 +167,12 @@ public class TxCoreServerHandler extends ChannelInboundHandlerAdapter { // (1)
     }
 
     @Override
-    public void channelReadComplete(ChannelHandlerContext ctx)throws Exception {
+    public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {
         ctx.flush();
     }
 
     @Override
-    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception{
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
         cause.printStackTrace();
         ctx.close();
     }
