@@ -1,6 +1,8 @@
 # TxManager
 TxManager是LCN分布式事务框架的事务协调器，框架基于Netty做消息通讯，事务控制数据存储在Redis中。
 
+原理向下找：LCN分布式事务框架的设计原理 标题。
+
 ## 使用教程
 1. 启动redis服务，并配置redis.properties配置文件
 
