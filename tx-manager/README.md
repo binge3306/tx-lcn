@@ -1,28 +1,84 @@
 # TxManager
-LCN分布式事务管理器，协调分布式事务的事务管理，完成"三阶段"事务提交。
+TxManager是LCN分布式事务框架的，事务协调理，该框架基于Netty实现，事务控制数据存储在Redis中。
 
 ### 使用教程
-1. 启动redis服务，并配置redis.properties配置文件。
-2. 配置application.properties,redis.properties,tx.properties  配置文件。
-4. 启动TxManager run: TxManagerApplication.main()方法。
+1. 启动redis服务，并配置redis.properties配置文件
+
+```
+#redis ip
+redis.ip=127.0.0.1
+
+#redis port
+redis.port = 6379
+
+#redis密码
+#redis.auth=password
+```
+注意：密码需要时去掉添加即可。
+
+2. 配置application.properties下的端口如下：
+
+```
+#服务端口
+server.port=8888
+
+spring.thymeleaf.prefix=classpath:/templates/
+spring.thymeleaf.suffix=.html
+
+```
+
+3. 配置tx.properties配置
+
+```
+
+#本文可不配置，默认数据为transaction_wait_max_time=5 redis_save_max_time=30
+
+#参与事务的最大等待时间（单位：秒） 所有参与分布式事务逻辑处理的最大等待时间
+transaction_wait_max_time = 5
+
+#存储到redis下的数据最大保存时间（单位：秒）
+redis_save_max_time = 30
+
+#socket server Socket对外服务端口
+socket.port = 9999
+
+#socket ip Socket对外服务IP (主要：必须是外网访问地址)
+socket.ip = 192.168.3.102
+
+# 最大socket连接数
+socket.max.connection = 100
+
+#开启负载均衡策略 true false
+slb.on = false
+
+#开启负载均衡必填项 服务器地址列表
+
+#负载均衡类型 轮训策略:polling
+slb.type = polling
+
+#服务器地址列表  说明：中间用#分割(不能写本服务器，不然会出现死循环)端口是指服务端口非socket端口
+slb.list = http://127.0.0.1:8889/#http://127.0.0.1:8810/
+
+```
+
+4. 配置完成后启动TxManagerApplication.main()方法，或者通过springboot打包运行。
 
 
 # LCN分布式事务框架的设计原理
 
 该框架分布式事务是基于spring事务框架基础之上做的再次封装，通过控制协调本地事务与全局事务的一致从而达到分布式事务控制。该框架依赖Redis服务，将事务控制数据存放在redis下，因此在集群TxManager时只需要让其共享Redis服务即可。
 
+特别说明：LCN框架 非TCC机制，非2PC机制 非3PC机制，原理说明请继续阅读。
 
-## "三节段"提交事务
-1. 锁定事务单元
-2. 确认事务模块状态
-3. 通知事务
+## 事务操作步骤
+1. 锁定事务单元（lock）
+2. 确认事务模块状态(confirm)
+3. 通知事务(notify)
 
 
 ## 锁定事务单元
 
 ![ ](readme/锁定阶段.png)
-
-
 
 
 我们假设方法A是分布式事务发起方法，A调用了B和C，B有调用了B1 B1有调用了B11和B12。如下图：
@@ -41,6 +97,7 @@ LCN分布式事务管理器，协调分布式事务的事务管理，完成"三�
 . A事务执行次完毕，通知TxManager事务单元状态，然后进入等待通知状态。  
 . A发起通知TxManager第一阶段已经执行完毕。  
 
+备注：LCN在处理事务的时候都将开启子线程处理事务，主线程返回业务数据，从而避免主线程堵塞。
 
 ## 确认事务模块状态
 
@@ -52,3 +109,4 @@ LCN分布式事务管理器，协调分布式事务的事务管理，完成"三�
 当事务模块存在异常，那么在第一阶段时就能得知整个事务状态，然后直接通知各个事务单元事务回滚。此时即便事务没有收到通知，事务也会自动回滚。若事务都正常但在确认事务模块状态时，发现事务无法访问，则依旧会通知事务模块回滚，那么那些无法访问的模块由于没有接受到TxManager的任何指令也会自动回滚，那些已经被通知到事务单元模块会等待TxManager通知事务回滚。若都正常的情况下会通知事务全部提交。
 
 
+技术交流群：554855843
