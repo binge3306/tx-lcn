@@ -61,7 +61,9 @@ slb.list = http://127.0.0.1:8889/#http://127.0.0.1:8810/
 
 ```
 
-4. 配置完成后启动TxManagerApplication.main()方法，或者通过springboot打包运行。
+4. 配置完成后启动TxManagerApplication.main()方法，或者通过springboot打包运行。然后访问`http://127.0.0.1:8888`
+
+![ ](readme/tx-manager.png)
 
 
 # LCN分布式事务框架的设计原理
