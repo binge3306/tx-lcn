@@ -16,13 +16,12 @@
     @Override
     @TxTransaction
     public boolean hello() {
-
+        //本地调用
         testDao.save();
-
-        boolean res =  test2Service.test();//远程调用方
-
+        //远程调用方
+        boolean res =  test2Service.test();
+        //模拟异常
         int v = 100/0;
-
         return true;
     }
     
@@ -33,15 +32,16 @@
 
     @Override
     public boolean test() {
-     
+        //本地调用
         testDao.save();
-        
         return true;
     }
 
 ```
 
-说明：只需要在分布式事务的**开启方**添加`@TxTransaction`注解即可。详细使用步骤见demo
+如上代码执行完成以后两个模块都将回滚事务。
+
+说明：只需要在分布式事务的**开启方**添加`@TxTransaction`注解即可。详细见demo教程
 
 
 ## 目录说明
