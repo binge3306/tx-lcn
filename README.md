@@ -8,6 +8,41 @@
 4. 基于切面的强一致性事务框架
 5. 高可用性，模块可以依赖dubbo或者springcloud的集群方式做集群化，TxManager也可以做集群化
 
+## 使用示例
+
+分布式事务发起方：
+```java
+
+    @Override
+    @TxTransaction
+    public boolean hello() {
+
+        testDao.save();
+
+        boolean res =  test2Service.test();//远程调用方
+
+        int v = 100/0;
+
+        return true;
+    }
+    
+```
+
+分布式事务被调用方(test2Service的业务实现类)
+```java
+
+    @Override
+    public boolean test() {
+     
+        testDao.save();
+        
+        return true;
+    }
+
+```
+
+说明：只需要在分布式事务的**开启方**添加`@TxTransaction`注解即可。详细使用步骤见demo
+
 
 ## 目录说明
 
