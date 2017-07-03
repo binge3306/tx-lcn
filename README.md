@@ -4,9 +4,9 @@
 
 1. 支持各种基于spring的db框架
 2. 兼容springcloud、dubbo
-3. 使用简单，demo详细，项目开源
+3. 使用简单，代码完全开源
 4. 基于切面的强一致性事务框架
-5. 高可用性，模块可以依赖dubbo或者springcloud的集群方式做集群化，TxManager也可以做集群化
+5. 高可用，模块可以依赖dubbo或springcloud的集群方式做集群化，TxManager也可以做集群化
 
 ## 使用示例
 
@@ -60,6 +60,8 @@ tx-manager 是LCN 分布式事务协调器（TxManager）
 见 [TxManager](https://github.com/1991wangliang/tx-lcn/blob/master/tx-manager/README.md)
 
 ## demo 说明
+
+demo里包含jdbc\hibernate\mybatis版本的demo
 
 dubbo版本的demo [dubbo-demo](https://github.com/1991wangliang/dubbo-lcn-demo)
 
